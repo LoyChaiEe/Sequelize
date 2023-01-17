@@ -1,21 +1,24 @@
 // require Express NPM library
 const express = require("express");
 
-// Declare the port to listen to and initialise Express
-const PORT = 3000;
+// initialise Express
 const app = express();
 
-//Setting up Controller and router
-const GameController = require('./controller/GameController')
-const gameController = new GameController()
+// connect db
+const db = require('./db/models/index')
+const { fruit } = db
 
-const GameRouter = require('./gamerouter/GameRouter')
-const gameRouter = new GameRouter(gameController, express)
+//Setting up Controller and router
+const FruitController = require('./controller/FruitController')
+const fruitController = new FruitController(fruit);
+
+const FruitRouter = require("./routers/FruitRouter");
+const fruitRouter = new FruitRouter(fruitController, express);
 
 //Setting up middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use('/game', gameRouter.route())
+app.use("/fruit", fruitRouter.route());
 //If page is not found (error handling)
 app.use('/', (req,res) => {
   res.send("ERROR 404 NOT FOUND")
