@@ -6,14 +6,14 @@ const app = express();
 
 // connect db
 const db = require('./db/models/index')
-const { fruit } = db
+const { fruit, address, cart, ordered_fruit, orders, users} = db;
 
 //Setting up Controller and router
 const FruitController = require('./controller/FruitController')
 const fruitController = new FruitController(fruit);
 
 const FruitRouter = require("./routers/FruitRouter");
-const fruitRouter = new FruitRouter(fruitController, express);
+const fruitRouter = new FruitRouter(fruitController, express); 
 
 //Setting up middleware
 app.use(express.json());

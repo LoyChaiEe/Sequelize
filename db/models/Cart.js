@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "ordered_fruit",
+      modelName: "cart",
       underscored: true,
     }
   );

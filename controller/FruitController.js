@@ -1,7 +1,6 @@
 class FruitController {
   constructor(model) {
     this.model = model;
-    console.log(this.model);
   }
 
   list = async (req, res) => {

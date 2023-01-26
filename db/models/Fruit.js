@@ -1,7 +1,8 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Fruits extends Model {}
-  Fruits.init({
+  //Singular naming for model as you are representing one instance of fruit
+  class Fruit extends Model {}
+  Fruit.init({
     name: DataTypes.STRING,
     taste: DataTypes.STRING,
     colour: DataTypes.STRING,
@@ -10,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
   },
   {
     sequelize,
-    modelName: "fruits",
+    modelName: "fruit", //VERY IMPORTANT TO REMEMBER THIS NAMING FOR DB destructering also must name based on the model name
     underscored: true
   });
-  return Fruits
+  return Fruit
 }
